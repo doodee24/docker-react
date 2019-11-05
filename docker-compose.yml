@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /doodee24/app/node_modules
+      - .:/doodee24/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /doodee24/app/node_modules
+      - .:/doodee24/app
+    command: ["npm", "run", "test"]
